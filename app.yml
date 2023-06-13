@@ -32,3 +32,31 @@ spec:
     protocol: TCP
     port: 80
     targetPort: backend-port
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongo
+  namespace: python-app
+  labels:
+    app.kubernetes.io/name: mongo
+spec:
+  containers:
+  - name: mongo
+    image: mongo:6.0.2
+    ports:
+      - containerPort: 27017
+        name: db-port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+  namespace: python-app
+spec:
+  selector:
+    app: mongo
+  ports:
+    - port: 27017
+      targetPort: db-port
+
