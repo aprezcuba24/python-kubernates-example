@@ -21,7 +21,7 @@ def get_all_tasks():
 def create_task():
     data = request.get_json(force=True)
     db.task.insert_one({"task": data["task"]})
-    return jsonify(message="Task saved successfully!")
+    return jsonify(message="Task saved successfully")
 
 
 if __name__ == "__main__":
