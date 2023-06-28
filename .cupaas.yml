@@ -1,0 +1,6 @@
+runtime: python:3.8.6
+entrypoint:
+  - python
+  - app.py
+services:
+  - mongodb: 6.0.2
